@@ -50,9 +50,13 @@ XMLファイル形式に変換します。
 
 実行例
 =================== 
-CoverageConverter.exe /in:data.coverage /out:data.xml
+入力ファイル：data.coverage  
+出力ファイル：data.xml の場合  
+
+<code>CoverageConverter.exe /in:data.coverage /out:data.xml</code>
 
 Emma形式に変換
 =================== 
-MSTestCoverageToEmma.xslを「/xsl:」に指定して下さい。  
+下記からMSTestCoverageToEmma.xslをダウンロードをして、  
+実行時に「/xsl:」に指定して下さい。  
 http://wiki.hudson-ci.org/pages/viewpageattachments.action?pageId=41878013&metadataLink=true
