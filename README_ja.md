@@ -59,4 +59,6 @@ Emma形式に変換
 =================== 
 下記からMSTestCoverageToEmma.xslをダウンロードをして、  
 実行時に「/xsl:」に指定して下さい。  
-http://wiki.hudson-ci.org/pages/viewpageattachments.action?pageId=41878013&metadataLink=true
+http://wiki.hudson-ci.org/pages/viewpageattachments.action?pageId=41878013&metadataLink=true  
+
+<code>CoverageConverter.exe /in:data.coverage /out:data.xml /xsl:MSTestCoverageToEmma.xsl</code>
