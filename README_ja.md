@@ -11,35 +11,35 @@ XMLファイル形式に変換します。
   <td>説明</td>
 </tr>
 <tr>
-  <td>/in:"ファイルパス"</td>
+  <td>/in:[ ファイルパス ]</td>
   <td>
     入力対象のファイルパスを指定します。<br />
     入力例：/in:data.coverage
   </td>
 </tr>
 <tr>
-  <td>/out:"ファイルパス"</td>
+  <td>/out:[ ファイルパス ]</td>
   <td>
     出力対象のファイルパスを指定します。<br />
     入力例：/out:data.xml
   </td>
 </tr>
 <tr>
-  <td>/symbols:"ディレクトリ"</td>
+  <td>/symbols:[ ディレクトリ ]</td>
   <td>
     デバッグシンボルが配置されているディレクトリを指定します。<br />
     入力例：/symbols:TestResult\Out
   </td>
 </tr>
 <tr>
-  <td>/exedir:"ディレクトリ"</td>
+  <td>/exedir:[ ディレクトリ ]</td>
   <td>
     カバレッジ取得対象の実行ファイルが配置されているディレクトリを指定します。<br />
     入力例：/exedir:TestResult\Out
   </td>
 </tr>
 <tr>
-  <td>/xsl:"ファイルパス"</td>
+  <td>/xsl:[ ファイルパス ]</td>
   <td>
     XML出力時に変換を行いたい場合、XSL形式のファイルを指定します。<br />
     入力例：/xsl:MSTestCoverageToEmma.xsl
