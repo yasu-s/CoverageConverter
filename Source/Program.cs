@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text;
 using System.Xml;
 using System.Xml.Xsl;
 using Microsoft.VisualStudio.CodeCoverage;
@@ -26,6 +27,9 @@ namespace Toneri
 		/// <summary>argument prefix: Convert Xsl Path</summary>
 		private const string ARGS_PREFIX_XSL_PATH = "/xsl:";
 
+		/// <summary>argument prefix: Help</summary>
+		private const string ARGS_HELP = "/?";
+
 		/// <summary>
 		/// Main process
 		/// </summary>
@@ -36,11 +40,20 @@ namespace Toneri
 
 			try
 			{
-				string inputPath  = ConvertArg(args, ARGS_PREFIX_INPUT_PATH);
+				// cosole write header.
+				ConsoleWriteHeader();
+
+				if (IsConsoleWriteHelp(args))
+				{
+					ConsoleWriteHelp();
+					return;
+				}
+
+				string inputPath = ConvertArg(args, ARGS_PREFIX_INPUT_PATH);
 				string outputPath = ConvertArg(args, ARGS_PREFIX_OUTPUT_PATH);
 				string symbolsDir = ConvertArg(args, ARGS_PREFIX_SYMBOLS_DIR);
-				string exeDir     = ConvertArg(args, ARGS_PREFIX_EXE_DIR);
-				string xslPath    = ConvertArg(args, ARGS_PREFIX_XSL_PATH);
+				string exeDir = ConvertArg(args, ARGS_PREFIX_EXE_DIR);
+				string xslPath = ConvertArg(args, ARGS_PREFIX_XSL_PATH);
 
 				if (!File.Exists(inputPath))
 				{
@@ -52,7 +65,7 @@ namespace Toneri
 
 				string inputDir = Path.GetDirectoryName(inputPath);
 				CoverageInfoManager.SymPath = (string.IsNullOrEmpty(symbolsDir)) ? (inputDir) : (symbolsDir);
-				CoverageInfoManager.ExePath = (string.IsNullOrEmpty(exeDir))     ? (inputDir) : (exeDir);
+				CoverageInfoManager.ExePath = (string.IsNullOrEmpty(exeDir)) ? (inputDir) : (exeDir);
 
 				CoverageInfo ci = CoverageInfoManager.CreateInfoFromFile(inputPath);
 				CoverageDS data = ci.BuildDataSet(null);
@@ -63,7 +76,7 @@ namespace Toneri
 
 				Console.WriteLine("output file: {0}", outputWk);
 
-				if (xslPath == null)
+				if (string.IsNullOrEmpty(xslPath))
 					data.WriteXml(outputWk);
 				else
 					WriteTransformXml(data, outputWk, xslPath);
@@ -118,7 +131,62 @@ namespace Toneri
 					transform.Transform(reader, writer);
 				}
 			}
-			
+
+		}
+
+		/// <summary>
+		/// check write help.
+		/// </summary>
+		/// <param name="args">Command Line Arguments</param>
+		/// <returns>true:write help</returns>
+		private static bool IsConsoleWriteHelp(string[] args)
+		{
+			if ((args == null) || (args.Length == 0))
+				return true;
+
+			foreach (string arg in args)
+			{
+				if (ARGS_HELP.Equals(arg))
+					return true;
+			}
+
+			return false;
+		}
+
+		/// <summary>
+		/// Cosole Write Application Header.
+		/// </summary>
+		private static void ConsoleWriteHeader()
+		{
+			Assembly asm = Assembly.GetExecutingAssembly();
+			AssemblyCopyrightAttribute asmcpy = (AssemblyCopyrightAttribute)Attribute.GetCustomAttribute(asm, typeof(AssemblyCopyrightAttribute));
+			Console.WriteLine("{0} [Version {1}]", asm.GetName().Name, asm.GetName().Version);
+			Console.WriteLine(asmcpy.Copyright);
+		}
+
+		/// <summary>
+		/// Console Write Application Help. 
+		/// </summary>
+		private static void ConsoleWriteHelp()
+		{
+			Console.WriteLine();
+
+			if (System.Threading.Thread.CurrentThread.CurrentCulture.Name.IndexOf("ja") >= 0)
+			{
+				Console.WriteLine("/in:[ ファイルパス ] \t 入力対象のファイルパスを指定します。");
+				Console.WriteLine("/out:[ ファイルパス ] \t 出力対象のファイルパスを指定します。");
+				Console.WriteLine("/symbols:[ ディレクトリ ] \t デバッグシンボルが配置されているディレクトリを指定します。");
+				Console.WriteLine("/exedir:[ ディレクトリ ] \t カバレッジ取得対象の実行ファイルが配置されているディレクトリを指定します。");
+				Console.WriteLine("/xsl:[ ファイルパス ] \t XML出力時に変換を行いたい場合、XSL形式のファイルを指定します。");
+			}
+			else
+			{
+				Console.WriteLine("/in:[ file path ] \t specify a file path in which you want to enter.");
+				Console.WriteLine("/out:[ file path ] \t specify the file path of the output target.");
+				Console.WriteLine("/symbols:[ directory ] \t specifies the directory where the debug symbols are located.");
+				Console.WriteLine("/exedir:[ directory ] \t specifies the directory where the executable file to be retrieved coverage is located.");
+				Console.WriteLine("/xsl:[ file path ] \t If you want to convert the output XML, I want to specify the file format of XSL.");
+			}
 		}
 	}
 }
