@@ -1,11 +1,15 @@
 Coverage Converter
-===================  
+-------  
 
 Coverage file that is output after running the MsTest  
-I converted to XML file format. 
+I converted to XML file format.   
+When you convert to the Emma coverage report file format file in Jenkins  
+I find it useful to use.  
+
 
 Command line arguments
-=================== 
+-------
+
 <table>
 <tr>
   <th>argument</th>
@@ -49,15 +53,20 @@ Command line arguments
 </table>
 
 
+
 Example
-=================== 
+------- 
+
 Input file：data.coverage  
 Output file：data.xml   
 
 <code>CoverageConverter.exe /in:data.coverage /out:data.xml</code>
 
+
+
 Emma format transform.
-=================== 
+------- 
+
 Download from the following MSTestCoverageToEmma.xsl.  
 http://wiki.hudson-ci.org/pages/viewpageattachments.action?pageId=41878013&metadataLink=true
 
