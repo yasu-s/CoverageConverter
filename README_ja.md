@@ -1,10 +1,14 @@
-Coverage Converter
-===================  
+Coverage Converter とは？
+-------  
 MsTestを実行後に出力されるカバレッジファイルを  
 XMLファイル形式に変換します。  
+JenkinsでカバレッジファイルをEmma形式のレポートファイルに変換する時に  
+使用すると便利です。  
+
+
 
 コマンドライン引数
-=================== 
+-------
 <table>
 <tr>
   <th>引数</th>
@@ -48,15 +52,18 @@ XMLファイル形式に変換します。
 </table>
 
 
+
 実行例
-=================== 
+-------
 入力ファイル：data.coverage  
 出力ファイル：data.xml の場合  
 
 <code>CoverageConverter.exe /in:data.coverage /out:data.xml</code>
 
+
+
 Emma形式に変換
-=================== 
+------- 
 下記からMSTestCoverageToEmma.xslをダウンロードをして、  
 実行時に「/xsl:」に指定して下さい。  
 http://wiki.hudson-ci.org/pages/viewpageattachments.action?pageId=41878013&metadataLink=true  
