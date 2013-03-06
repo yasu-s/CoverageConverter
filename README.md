@@ -8,8 +8,8 @@ Command line arguments
 =================== 
 <table>
 <tr>
-  <td>argument</td>
-  <td>description</td>
+  <th>argument</th>
+  <th>description</th>
 </tr>
 <tr>
   <td>/in:[ file path ]</td>
