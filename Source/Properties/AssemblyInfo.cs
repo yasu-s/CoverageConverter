@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("CoverageConverter")]
-[assembly: AssemblyCopyright("(C) Copyright 2013 Yasuyuki Saito")]
+[assembly: AssemblyCopyright("Copyright (c) 2013 Yasuyuki Saito")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

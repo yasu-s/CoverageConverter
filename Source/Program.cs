@@ -173,19 +173,19 @@ namespace Toneri
 
 			if (System.Threading.Thread.CurrentThread.CurrentCulture.Name.IndexOf("ja") >= 0)
 			{
-				Console.WriteLine("/in:[ ファイルパス ] \t 入力対象のファイルパスを指定します。");
-				Console.WriteLine("/out:[ ファイルパス ] \t 出力対象のファイルパスを指定します。");
-				Console.WriteLine("/symbols:[ ディレクトリ ] \t デバッグシンボルが配置されているディレクトリを指定します。");
-				Console.WriteLine("/exedir:[ ディレクトリ ] \t カバレッジ取得対象の実行ファイルが配置されているディレクトリを指定します。");
-				Console.WriteLine("/xsl:[ ファイルパス ] \t XML出力時に変換を行いたい場合、XSL形式のファイルを指定します。");
+				Console.WriteLine("/in:[ ファイルパス ]       入力対象のファイルパスを指定します。");
+				Console.WriteLine("/out:[ ファイルパス ]      出力対象のファイルパスを指定します。");
+				Console.WriteLine("/symbols:[ ディレクトリ ]  デバッグシンボルが配置されているディレクトリを指定します。");
+				Console.WriteLine("/exedir:[ ディレクトリ ]   カバレッジ取得対象の実行ファイルが配置されているディレクトリを指定します。");
+				Console.WriteLine("/xsl:[ ファイルパス ]      XML出力時に変換を行いたい場合、XSL形式のファイルを指定します。");
 			}
 			else
 			{
-				Console.WriteLine("/in:[ file path ] \t specify a file path in which you want to enter.");
-				Console.WriteLine("/out:[ file path ] \t specify the file path of the output target.");
-				Console.WriteLine("/symbols:[ directory ] \t specifies the directory where the debug symbols are located.");
-				Console.WriteLine("/exedir:[ directory ] \t specifies the directory where the executable file to be retrieved coverage is located.");
-				Console.WriteLine("/xsl:[ file path ] \t If you want to convert the output XML, I want to specify the file format of XSL.");
+				Console.WriteLine("/in:[ file path ]       specify a file path in which you want to enter.");
+				Console.WriteLine("/out:[ file path ]      specify the file path of the output target.");
+				Console.WriteLine("/symbols:[ directory ]  specifies the directory where the debug symbols are located.");
+				Console.WriteLine("/exedir:[ directory ]   specifies the directory where the executable file to be retrieved coverage is located.");
+				Console.WriteLine("/xsl:[ file path ]      If you want to convert the output XML, I want to specify the file format of XSL.");
 			}
 		}
 	}
