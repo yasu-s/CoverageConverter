@@ -12,6 +12,9 @@ namespace Toneri
 {
 	class Program
 	{
+		/// <summary>site url</summary>
+		private const string SITE_URL = "https://github.com/yasu-s/CoverageConverter";
+
 		/// <summary>argument prefix: Input File Path</summary>
 		private const string ARGS_PREFIX_INPUT_PATH = "/in:";
 
@@ -49,11 +52,11 @@ namespace Toneri
 					return;
 				}
 
-				string inputPath = ConvertArg(args, ARGS_PREFIX_INPUT_PATH);
+				string inputPath  = ConvertArg(args, ARGS_PREFIX_INPUT_PATH);
 				string outputPath = ConvertArg(args, ARGS_PREFIX_OUTPUT_PATH);
 				string symbolsDir = ConvertArg(args, ARGS_PREFIX_SYMBOLS_DIR);
-				string exeDir = ConvertArg(args, ARGS_PREFIX_EXE_DIR);
-				string xslPath = ConvertArg(args, ARGS_PREFIX_XSL_PATH);
+				string exeDir     = ConvertArg(args, ARGS_PREFIX_EXE_DIR);
+				string xslPath    = ConvertArg(args, ARGS_PREFIX_XSL_PATH);
 
 				if (!File.Exists(inputPath))
 				{
@@ -82,6 +85,8 @@ namespace Toneri
 					WriteTransformXml(data, outputWk, xslPath);
 
 				result = true;
+
+				Console.WriteLine("convert success.");
 			}
 			catch (Exception ex)
 			{
@@ -122,6 +127,8 @@ namespace Toneri
 		/// <param name="xslPath">Xsl File Path</param>
 		private static void WriteTransformXml(CoverageDS data, string outputPath, string xslPath)
 		{
+			Console.WriteLine("xsl file: {0}", xslPath);
+
 			using (XmlReader reader = new XmlTextReader(new StringReader(data.GetXml())))
 			{
 				using (XmlWriter writer = new XmlTextWriter(outputPath, Encoding.UTF8))
@@ -131,7 +138,6 @@ namespace Toneri
 					transform.Transform(reader, writer);
 				}
 			}
-
 		}
 
 		/// <summary>
@@ -162,6 +168,7 @@ namespace Toneri
 			AssemblyCopyrightAttribute asmcpy = (AssemblyCopyrightAttribute)Attribute.GetCustomAttribute(asm, typeof(AssemblyCopyrightAttribute));
 			Console.WriteLine("{0} [Version {1}]", asm.GetName().Name, asm.GetName().Version);
 			Console.WriteLine(asmcpy.Copyright);
+			Console.WriteLine("URL: {0}", SITE_URL);
 		}
 
 		/// <summary>
@@ -178,6 +185,7 @@ namespace Toneri
 				Console.WriteLine("/symbols:[ ディレクトリ ]  デバッグシンボルが配置されているディレクトリを指定します。");
 				Console.WriteLine("/exedir:[ ディレクトリ ]   カバレッジ取得対象の実行ファイルが配置されているディレクトリを指定します。");
 				Console.WriteLine("/xsl:[ ファイルパス ]      XML出力時に変換を行いたい場合、XSL形式のファイルを指定します。");
+				Console.WriteLine("/?                         ヘルプを表示します。");
 			}
 			else
 			{
@@ -186,6 +194,7 @@ namespace Toneri
 				Console.WriteLine("/symbols:[ directory ]  specifies the directory where the debug symbols are located.");
 				Console.WriteLine("/exedir:[ directory ]   specifies the directory where the executable file to be retrieved coverage is located.");
 				Console.WriteLine("/xsl:[ file path ]      If you want to convert the output XML, I want to specify the file format of XSL.");
+				Console.WriteLine("/?                      Displays the help.");
 			}
 		}
 	}
