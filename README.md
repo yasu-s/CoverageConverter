@@ -7,6 +7,28 @@ When you convert to the Emma coverage report file format file in Jenkins
 I find it useful to use.  
 
 
+Type of Coverage Converter
+-------  
+<table>
+<tr>
+  <th>file path</th>
+  <th>description</th>
+</tr>
+<tr>
+  <td>mstest/Binaries/CoverageConverter.exe</td>
+  <td>
+    Can convert the coverage file that was created from mstest.exe.
+  </td>
+</tr>
+<tr>
+  <td>vstest/Binaries/CoverageConverter.exe</td>
+  <td>
+    Can convert the coverage file that was created from vstest.console.exe.
+  </td>
+</tr>
+</table>
+
+
 Command line arguments
 -------
 

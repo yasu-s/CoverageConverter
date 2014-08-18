@@ -6,6 +6,27 @@ JenkinsでカバレッジファイルをEmma形式のレポートファイルに
 使用すると便利です。  
 
 
+Coverage Converter の種類
+-------  
+<table>
+<tr>
+  <th>ファイルパス</th>
+  <th>説明</th>
+</tr>
+<tr>
+  <td>mstest/Binaries/CoverageConverter.exe</td>
+  <td>
+    mstest.exeから作成されたカバレッジファイルを変換出来ます。
+  </td>
+</tr>
+<tr>
+  <td>vstest/Binaries/CoverageConverter.exe</td>
+  <td>
+    vstest.console.exeから作成されたカバレッジファイルを変換出来ます。
+  </td>
+</tr>
+</table>
+
 
 コマンドライン引数
 -------
