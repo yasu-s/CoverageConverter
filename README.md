@@ -12,16 +12,19 @@ Type of Coverage Converter
 <table>
 <tr>
   <th>file path</th>
+  <th>.NET Framework</th>
   <th>description</th>
 </tr>
 <tr>
   <td>mstest/Binaries/CoverageConverter.exe</td>
+  <td>3.5</td>
   <td>
     Can convert the coverage file that was created from mstest.exe.
   </td>
 </tr>
 <tr>
   <td>vstest/Binaries/CoverageConverter.exe</td>
+  <td>4.5</td>
   <td>
     Can convert the coverage file that was created from vstest.console.exe.
   </td>
