@@ -15,14 +15,14 @@ Coverage Converter の種類
   <th>説明</th>
 </tr>
 <tr>
-  <td>mstest/Binaries/CoverageConverter.exe</td>
+  <td>mstest/Sources/</td>
   <td>3.5</td>
   <td>
     mstest.exeから作成されたカバレッジファイルを変換出来ます。
   </td>
 </tr>
 <tr>
-  <td>vstest/Binaries/CoverageConverter.exe</td>
+  <td>vstest/Sources/</td>
   <td>4.5</td>
   <td>
     vstest.console.exeから作成されたカバレッジファイルを変換出来ます。
