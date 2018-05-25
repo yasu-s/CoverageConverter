@@ -6,7 +6,8 @@ using System.Reflection;
 using System.Text;
 using System.Xml;
 using System.Xml.Xsl;
-using Microsoft.VisualStudio.CodeCoverage;
+using Microsoft.VisualStudio.Coverage;
+using Microsoft.VisualStudio.Coverage.Analysis;
 
 namespace Toneri
 {
@@ -67,10 +68,11 @@ namespace Toneri
 				Console.WriteLine("input file: {0}", inputPath);
 
 				string inputDir = Path.GetDirectoryName(inputPath);
-				CoverageInfoManager.SymPath = (string.IsNullOrEmpty(symbolsDir)) ? (inputDir) : (symbolsDir);
-				CoverageInfoManager.ExePath = (string.IsNullOrEmpty(exeDir)) ? (inputDir) : (exeDir);
+				var symbolsPath = (string.IsNullOrEmpty(symbolsDir)) ? (inputDir) : (symbolsDir);
+				var exePath = (string.IsNullOrEmpty(exeDir)) ? (inputDir) : (exeDir);
 
-				CoverageInfo ci = CoverageInfoManager.CreateInfoFromFile(inputPath);
+
+				CoverageInfo ci = CoverageInfo.CreateFromFile(inputPath,new[] { exePath}, new[] { symbolsPath});
 				CoverageDS data = ci.BuildDataSet(null);
 
 				string outputWk = outputPath;
