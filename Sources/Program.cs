@@ -187,21 +187,21 @@ namespace Toneri
 
             if (System.Threading.Thread.CurrentThread.CurrentCulture.Name.IndexOf("ja") >= 0)
             {
-                Console.WriteLine("/in:[ ファイルパス ]       入力対象のファイルパスを指定します。");
-                Console.WriteLine("/out:[ ファイルパス ]      出力対象のファイルパスを指定します。");
-                Console.WriteLine("/symbols:[ ディレクトリ ]  デバッグシンボルが配置されているディレクトリを指定します。");
-                Console.WriteLine("/exedir:[ ディレクトリ ]   カバレッジ取得対象の実行ファイルが配置されているディレクトリを指定します。");
-                Console.WriteLine("/xsl:[ ファイルパス ]      XML出力時に変換を行いたい場合、XSL形式のファイルを指定します。");
-                Console.WriteLine("/?                         ヘルプを表示します。");
+                Console.WriteLine("/in:[ ファイルパス or ファイルパターン ]  入力対象のファイルパスまたはファイルパターンを指定します。");
+                Console.WriteLine("/out:[ ファイルパス ]                     出力対象のファイルパスを指定します。");
+                Console.WriteLine("/symbols:[ ディレクトリ ]                 デバッグシンボルが配置されているディレクトリを指定します。");
+                Console.WriteLine("/exedir:[ ディレクトリ ]                  カバレッジ取得対象の実行ファイルが配置されているディレクトリを指定します。");
+                Console.WriteLine("/xsl:[ ファイルパス ]                     XML出力時に変換を行いたい場合、XSL形式のファイルを指定します。");
+                Console.WriteLine("/?                                        ヘルプを表示します。");
             }
             else
             {
-                Console.WriteLine("/in:[ file path ]       specify a file path in which you want to enter.");
-                Console.WriteLine("/out:[ file path ]      specify the file path of the output target.");
-                Console.WriteLine("/symbols:[ directory ]  specifies the directory where the debug symbols are located.");
-                Console.WriteLine("/exedir:[ directory ]   specifies the directory where the executable file to be retrieved coverage is located.");
-                Console.WriteLine("/xsl:[ file path ]      If you want to convert the output XML, I want to specify the file format of XSL.");
-                Console.WriteLine("/?                      Displays the help.");
+                Console.WriteLine("/in:[ file path or file pattern ] specify the file path or file pattern to be input.");
+                Console.WriteLine("/out:[ file path ]                specify the file path of the output target.");
+                Console.WriteLine("/symbols:[ directory ]            specifies the directory where the debug symbols are located.");
+                Console.WriteLine("/exedir:[ directory ]             specifies the directory where the executable file to be retrieved coverage is located.");
+                Console.WriteLine("/xsl:[ file path ]                If you want to convert the output XML, I want to specify the file format of XSL.");
+                Console.WriteLine("/?                                Displays the help.");
             }
         }
 
@@ -226,8 +226,8 @@ namespace Toneri
             }
             else
             {
-                string dirPath     = Path.GetDirectoryName(inputPath);
-                string filePattern = Path.GetFileName(inputPath);
+                var dirPath     = Path.GetDirectoryName(inputPath);
+                var filePattern = Path.GetFileName(inputPath);
 
                 if (string.IsNullOrWhiteSpace(filePattern))
                 {
@@ -238,7 +238,9 @@ namespace Toneri
                 if (string.IsNullOrWhiteSpace(dirPath))
                     dirPath = ".";
 
-                string[] paths = Directory.GetFiles(dirPath, filePattern);
+                var paths = Directory.GetFiles(dirPath, filePattern);
+
+                Console.WriteLine("input file pattern: {0}", inputPath);
 
                 if (!paths.Any())
                 {
