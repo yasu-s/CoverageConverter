@@ -1,35 +1,17 @@
 Coverage Converter とは？
 -------  
-MsTestを実行後に出力されるカバレッジファイルを  
+MsTestを実行後に出力されるカバレッジファイル(.coverage)を  
 XMLファイル形式に変換します。  
 JenkinsでカバレッジファイルをEmma形式のレポートファイルに変換する時に  
 使用すると便利です。  
 
 
-Coverage Converter の種類
+動作環境
 -------  
-<table>
-<tr>
-  <th>ファイルパス</th>
-  <th>.NET Framework</th>
-  <th>説明</th>
-</tr>
-<tr>
-  <td>mstest/Sources/</td>
-  <td>3.5</td>
-  <td>
-    mstest.exeから作成されたカバレッジファイルを変換出来ます。
-  </td>
-</tr>
-<tr>
-  <td>vstest/Sources/</td>
-  <td>4.5</td>
-  <td>
-    vstest.console.exeから作成されたカバレッジファイルを変換出来ます。
-  </td>
-</tr>
-</table>
 
+* .NET Framework 4.5  
+* vstest.console.exe or VisualStudio2012以降 で作成されたカバレッジファイル  
+※MSTest.exe or VisualStudio2010以前 で作成されたカバレッジファイルでは動作しません。  
 
 コマンドライン引数
 -------
@@ -39,10 +21,10 @@ Coverage Converter の種類
   <th>説明</th>
 </tr>
 <tr>
-  <td>/in:[ ファイルパス ]</td>
+  <td>/in:[ ファイルパス or ファイルパターン ]</td>
   <td>
-    入力対象のファイルパスを指定します。<br />
-    入力例：/in:data.coverage
+    入力対象の ファイルパス または ファイルパターン を指定します。<br />
+    入力例：/in:data.coverage or /in:TestResult\*.coverage
   </td>
 </tr>
 <tr>
@@ -90,6 +72,14 @@ Emma形式に変換
 ------- 
 下記からMSTestCoverageToEmma.xslをダウンロードをして、  
 実行時に「/xsl:」に指定して下さい。  
-http://wiki.hudson-ci.org/pages/viewpageattachments.action?pageId=41878013&metadataLink=true  
+https://github.com/jenkinsci/mstest-plugin/blob/master/src/main/resources/hudson/plugins/mstest/MSTestCoverageToEmma.xsl  
 
 <code>CoverageConverter.exe /in:data.coverage /out:data.xml /xsl:MSTestCoverageToEmma.xsl</code>
+
+
+Visual Studio 2010 または MSTest.exe のカバレッジファイルでの利用  
+-------  
+
+Visual Studio 2012
+以下のファイルを解凍して利用可能です。
+https://github.com/yasu-s/CoverageConverter/releases/download/v1.0/mstest_1.0.zip  
