@@ -10,8 +10,8 @@ JenkinsでカバレッジファイルをEmma形式のレポートファイルに
 -------  
 
 * .NET Framework 4.5  
-* vstest.console.exe or VisualStudio2012以降 で作成されたカバレッジファイル  
-※MSTest.exe or VisualStudio2010以前 で作成されたカバレッジファイルでは動作しません。  
+* vstest.console.exe または VisualStudio2012以降 から出力したカバレッジファイル  
+※MSTest.exe または VisualStudio2010以前 から出力されたカバレッジファイルでは動作しません。  
 
 コマンドライン引数
 -------
@@ -77,9 +77,8 @@ https://github.com/jenkinsci/mstest-plugin/blob/master/src/main/resources/hudson
 <code>CoverageConverter.exe /in:data.coverage /out:data.xml /xsl:MSTestCoverageToEmma.xsl</code>
 
 
-Visual Studio 2010 または MSTest.exe のカバレッジファイルでの利用  
+MSTest.exe または VisualStudio2010以前 から出力したカバレッジファイルの利用  
 -------  
 
-Visual Studio 2012
-以下のファイルを解凍して利用可能です。
+以下のファイルをお使いください。  
 https://github.com/yasu-s/CoverageConverter/releases/download/v1.0/mstest_1.0.zip  

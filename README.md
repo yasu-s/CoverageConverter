@@ -1,36 +1,18 @@
 Coverage Converter
 -------  
 
-Coverage file that is output after running the MsTest  
+Coverage file(.coverage) that is output after running the MsTest  
 I converted to XML file format.   
 When you convert to the Emma coverage report file format file in Jenkins  
 I find it useful to use.  
 
 
-Type of Coverage Converter
+Operating environment
 -------  
-<table>
-<tr>
-  <th>file path</th>
-  <th>.NET Framework</th>
-  <th>description</th>
-</tr>
-<tr>
-  <td>mstest/Sources/</td>
-  <td>3.5</td>
-  <td>
-    Can convert the coverage file that was created from mstest.exe.
-  </td>
-</tr>
-<tr>
-  <td>vstest/Sources/</td>
-  <td>4.5</td>
-  <td>
-    Can convert the coverage file that was created from vstest.console.exe.
-  </td>
-</tr>
-</table>
 
+* .NET Framework 4.5  
+* Coverage file output by vstest.console.exe or VisualStudio 2010 or later  
+※It will not work with coverage files output from MSTest.exe or VisualStudio 2010 or earlier.  
 
 Command line arguments
 -------
@@ -41,10 +23,10 @@ Command line arguments
   <th>description</th>
 </tr>
 <tr>
-  <td>/in:[ file path ]</td>
+  <td>/in:[ file path or file pattern ]</td>
   <td>
-    specify a file path in which you want to enter. <br />
-    example：/in:data.coverage
+    specify the file path or file pattern to be input. <br />
+    example：/in:data.coverage or /in:TestResult\*.coverage  
   </td>
 </tr>
 <tr>
@@ -93,6 +75,13 @@ Emma format transform.
 ------- 
 
 Download from the following MSTestCoverageToEmma.xsl.  
-http://wiki.hudson-ci.org/pages/viewpageattachments.action?pageId=41878013&metadataLink=true
+https://github.com/jenkinsci/mstest-plugin/blob/master/src/main/resources/hudson/plugins/mstest/MSTestCoverageToEmma.xsl  
 
 <code>CoverageConverter.exe /in:data.coverage /out:data.xml /xsl:MSTestCoverageToEmma.xsl</code>
+
+
+Use of coverage file outputted from MSTest.exe or VisualStudio 2010 or earlier  
+-------  
+
+Please use the following file.  
+https://github.com/yasu-s/CoverageConverter/releases/download/v1.0/mstest_1.0.zip  
