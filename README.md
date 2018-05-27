@@ -11,7 +11,7 @@ Operating environment
 -------  
 
 * .NET Framework 4.5  
-* Coverage file output by vstest.console.exe or VisualStudio 2010 or later  
+* Coverage file output by vstest.console.exe or VisualStudio 2012 or later  
 ※It will not work with coverage files output from MSTest.exe or VisualStudio 2010 or earlier.  
 
 Command line arguments
